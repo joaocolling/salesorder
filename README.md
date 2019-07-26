@@ -9,6 +9,7 @@ db: salesorderdb
 ```
 
 Inserção de Fabricante:
+>Request URL:
 ```
 POST -> localhost:8080/manufacturer/insert
 
@@ -38,7 +39,32 @@ POST -> localhost:8080/manufacturer/insert
  2
 ```
 
+Alteração de Fabricante:
+
+>Request URL:
+```
+GET -> localhost:8080/manufacturer/update/2
+```
+
+>Request Body:
+```
+{
+	"name": "Alfa Chemical Industry II"
+}
+```
+
+
+>Request Body:
+```
+{
+	"id": 1,
+	"name": "Alfa Chemical Industry II"
+}
+```
+
 Recuperação de Fabricante:
+
+>Request URL:
 ```
 GET -> localhost:8080/manufacturer/get/1?fields=id,name
 ```
@@ -53,6 +79,7 @@ GET -> localhost:8080/manufacturer/get/1?fields=id,name
 
 Inserção de Produto:
 
+>Request URL:
 ``` 
 POST -> localhost:8080/product/insert
 ```
@@ -76,11 +103,6 @@ POST -> localhost:8080/product/insert
 1
 ```
 
-
-```
-POST -> localhost:8080/product/insert
-```
-
 >Request Body
 
 ```
@@ -95,8 +117,9 @@ POST -> localhost:8080/product/insert
 }
 ```
 
+>Response:
 ```
-POST -> localhost:8080/product/insert
+2
 ```
 
 >Request Body
@@ -112,7 +135,46 @@ POST -> localhost:8080/product/insert
 }
 ```
 
->Request
+>Response:
+```
+3
+```
+
+Alteração de Produto:
+
+>Request URL:
+```
+POST -> localhost:8080/product/update/3
+```
+
+>Request Body
+```
+{
+  "name": "Calcium",
+  "description": "Calcium Additive +",
+  "barcode": "700208500223",
+  "manufacturer": {
+    "id": 2
+  },
+  "unitPrice": 35.0
+}
+```
+
+>Response:
+```
+{
+  "name": "Calcium",
+  "description": "Calcium Additive +",
+  "barcode": "700208500223",
+  "manufacturer": {
+    "id": 2
+  },
+  "unitPrice": 35.0
+}
+```
+
+
+>Request URL:
 ```
 GET -> localhost:8080/product/get/1
 ```
@@ -133,7 +195,7 @@ GET -> localhost:8080/product/get/1
 
 Ordenados por nome:
 
->Request
+>Request URL:
 ```
 GET -> localhost:8080/product/findProducts?fields=id,name
 ```
@@ -157,6 +219,7 @@ GET -> localhost:8080/product/findProducts?fields=id,name
 ```
 
 
+>Request URL:
 ```
 POST -> localhost:8080/salesorder/insert
 ```
@@ -184,7 +247,7 @@ POST -> localhost:8080/salesorder/insert
 }
 ```
 
->Request
+>Request URL:
 ```
 GET -> localhost:8080/salesorder/get
 ```
@@ -236,3 +299,25 @@ GET -> localhost:8080/salesorder/get
 ```
 
 
+Cancelar um Pedido:
+
+>Request URL
+```
+GET -> localhost:8080/salesorder/cancel/1
+```
+
+>Response
+```
+NO CONTENT
+```
+
+Confirmar um Pedido:
+>Request URL:
+```
+GET -> localhost:8080/salesorder/confirm/1
+```
+
+>Response
+```
+NO CONTENT
+```
