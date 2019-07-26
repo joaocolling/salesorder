@@ -1,42 +1,65 @@
 Roteiro de Teste do Sistema
 
-Pré-Requisitos:
-
+```
 Banco PostgreSQL
 
 username: postgres
 pass: postgres
 db: salesorderdb
+```
 
 Inserção de Fabricante:
+```
 POST -> localhost:8080/manufacturer/insert
-Request Body:
+
+```
+
+>Request Body:
+```
 {
 	"name": "Quality farm goods"
 }
+```
 
-Response: 1
+>Response: 
+```
+1
+```
 
-Request Body:
+>Request Body:
+```
 {
 	"name": "Alfa Chemical Industry"
 }
-	
-Response: 2
+```	
+
+>Response:
+```
+ 2
+```
 
 Recuperação de Fabricante:
+```
 GET -> localhost:8080/manufacturer/get/1?fields=id,name
+```
 
-Response Body:
+>Response Body:
+```
 {
 	"id": 1,
 	"name": "Quality farm goods"
 }
-
+```
 
 Inserção de Produto:
- 
+
+``` 
 POST -> localhost:8080/product/insert
+```
+
+>Request Body:
+
+```
 {
   "name": "Grape juice",
   "description": "Natural grape juice",
@@ -46,8 +69,21 @@ POST -> localhost:8080/product/insert
   },
   "unitPrice": 25.0
 }
+```
 
+>Response:
+```
+1
+```
+
+
+```
 POST -> localhost:8080/product/insert
+```
+
+>Request Body
+
+```
 {
   "name": "Banana Vitamine",
   "description": "Natural banana vitamine",
@@ -57,8 +93,14 @@ POST -> localhost:8080/product/insert
   },
   "unitPrice": 30.0
 }
+```
 
+```
 POST -> localhost:8080/product/insert
+```
+
+>Request Body
+```
 {
   "name": "Calcium",
   "description": "Calcium Additive",
@@ -68,11 +110,15 @@ POST -> localhost:8080/product/insert
   },
   "unitPrice": 35.0
 }
+```
 
+>Request
+```
+GET -> localhost:8080/product/get/1
+```
 
-GET -> localhost:8080/product/get/1?fields=id,description,barcode,manufacturer.id,manufacturer.name,unitPrice
-
-Response Body:
+>Response Body:
+```
 {
   "id": 1,
   "description": "Natural grape juice",
@@ -83,9 +129,17 @@ Response Body:
   },
   "unitPrice": 18.55
 }
+```
 
 Ordenados por nome:
+
+>Request
+```
 GET -> localhost:8080/product/findProducts?fields=id,name
+```
+
+>Response:
+```
 [
     {
         "id": 2,
@@ -100,8 +154,15 @@ GET -> localhost:8080/product/findProducts?fields=id,name
         "name": "Grape juice"
     }
 ]
+```
 
+
+```
 POST -> localhost:8080/salesorder/insert
+```
+
+>Request Body:
+```
 {
   "products": [
     { "id": 1, "units": 2 },
@@ -121,10 +182,16 @@ POST -> localhost:8080/salesorder/insert
     "mode": "in-store withdrawal"
   }
 }
+```
 
+>Request
+```
+GET -> localhost:8080/salesorder/get
+```
 
-Response:
+>Response:
 
+```
 {
     "id": 1,
     "products": [
@@ -166,6 +233,6 @@ Response:
         "mode": "in-store withdrawal"
     }
 }
-
+```
 
 
